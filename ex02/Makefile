@@ -5,7 +5,6 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 SRCS = \
 		main.cpp \
-		MutantStack.cpp \
 
 OBJS = $(SRCS:%.cpp=%.o)
 
