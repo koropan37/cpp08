@@ -4,7 +4,6 @@
 #include <algorithm>
 #include <stdexcept>
 
-// find は失敗するとend() を返す
 template<typename T>
 typename T::iterator easyfind(T& container, int n) {
     typename T::iterator it = std::find(container.begin(), container.end(), n);

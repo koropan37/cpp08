@@ -84,22 +84,30 @@ int main()
         mstack.push(5);
         mstack.push(737);
         mstack.push(0);
-        MutantStack<int>::const_iterator it = mstack.begin();
-        MutantStack<int>::const_iterator ite = mstack.end();
-        while (it != ite)
-        {
+        for (MutantStack<int>::const_iterator it = mstack.begin();
+             it != mstack.end(); ++it)
             std::cout << *it << std::endl;
-            ++it;
-        }
-        mstack.pop();
+
         std::cout << std::endl;
 
         std::stack<int> s(mstack);
-        std::cout << mstack.top() << std::endl;
-        std::cout << s.top() << std::endl;
-        mstack.pop();   
-        std::cout << mstack.top() << std::endl;
-        std::cout << s.top() << std::endl; 
+        std::cout << "mstack top: " << mstack.top() << std::endl;
+        std::cout << "copy top  : "<< s.top() << std::endl;
+        mstack.pop();
+        std::cout << "mstack pop" << std::endl;          
+        std::cout << "mstack top: " << mstack.top() << std::endl;
+        std::cout << "copy top  : "<< s.top() << std::endl;
     }
+    printColor("rbegin, rend", GREEN);
+    MutantStack<int> mstack;
+        mstack.push(5);
+        mstack.push(17);
+        mstack.push(3);
+        mstack.push(5);
+        mstack.push(737);
+        mstack.push(0);
+        for (MutantStack<int>::reverse_iterator it = mstack.rbegin();
+             it != mstack.rend(); ++it)
+            std::cout << *it << std::endl;
     return 0;
 }

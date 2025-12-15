@@ -2,6 +2,7 @@
 #include <iostream>
 #include <limits>
 #include <ctime>
+#include <vector>
 #include <cstdlib>
 
 #define BLACK   "\033[0;30m"
@@ -46,11 +47,20 @@ int main()
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
 	}
+	printColor("0", BLUE);
+	{
+		Span sp(2);
+		sp.addNumber(0);
+		sp.addNumber(0);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	std::srand(time(NULL));
 	printColor("Over 10,000 elements", GREEN);
-	{	try {
+	{	
+		try {
 			std::vector<int> vec;
 			vec.reserve(10000);
-			std::srand(time(NULL));
 			for(int i = 0; i < 10000; ++i)
 				vec.push_back(std::rand());
 			Span sp(10000);
@@ -61,6 +71,18 @@ int main()
 			std::cerr << e.what() << std::endl;
 		}
 	}
+	printColor("Over 100,000 elements", MAGENTA);
+	{
+        try {
+			Span sp(100000);
+			for (int i = 0; i < 100000; ++i)
+				sp.addNumber(std::rand());
+            std::cout << sp.shortestSpan() << std::endl;
+            std::cout << sp.longestSpan() << std::endl;
+        } catch (std::exception& e) {
+            std::cerr << e.what() << std::endl;
+        }
+    }
 	printColor("Error", RED);
 	{
 		try {

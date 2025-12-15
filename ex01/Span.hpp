@@ -1,12 +1,12 @@
 #ifndef SPAN_HPP_
 #define SPAN_HPP_
 
-#include <vector>
+#include <set>
 #include <iterator>
 class Span {
  private:
 	unsigned int size_;
-	std::vector<int> numbers_;
+	std::multiset<int> numbers_;
 
 	Span();
 
@@ -21,12 +21,12 @@ class Span {
 	template<typename TIt>
 	void addNumber(TIt first, TIt last) {
 		std::ptrdiff_t d = std::distance(first, last);
-		 //(vector<int> v; first = v.end(), last = v.begin()) のようなとき
+		 //(multiset<int> v; first = v.end(), last = v.begin()) のようなとき
        	if (d < 0)
 			throw std::invalid_argument("addNumber: invalid range");
 	    if(numbers_.size() + static_cast<unsigned int>(d) > size_)
 			throw std::out_of_range("Span is full");
-		numbers_.insert(numbers_.end(), first, last);
+		numbers_.insert(first, last);
 	}
 
 	unsigned int shortestSpan() const;
