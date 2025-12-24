@@ -1,7 +1,7 @@
 #include "Span.hpp"
 #include <algorithm>
 #include <stdexcept>
-#include <limits> // for numeric_limits
+#include <limits>
 
 Span::Span(unsigned int N) : size_(N), numbers_() {}
 

@@ -4,7 +4,8 @@
 #include <stack>
 #include <deque>  
 
-template<typename T, class Container = std::deque<T> > // stack は内部で deque を持つ
+ // stack は内部で deque を持つ (begin() や pop() などを持たないコンテナは使えない)
+template<typename T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container> {
  public:
     typedef typename std::stack<T, Container>::container_type::iterator               iterator;

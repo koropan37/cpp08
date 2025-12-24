@@ -1,6 +1,8 @@
 #include "MutantStack.hpp"
 #include <iostream>
 #include <list>
+#include <vector>
+#include <set>
 
 #define BLACK   "\033[0;30m"
 #define RED     "\033[0;31m"
@@ -99,7 +101,8 @@ int main()
         std::cout << "copy top  : "<< s.top() << std::endl;
     }
     printColor("rbegin, rend", GREEN);
-    MutantStack<int> mstack;
+    {   
+        MutantStack<int> mstack;
         mstack.push(5);
         mstack.push(17);
         mstack.push(3);
@@ -109,5 +112,29 @@ int main()
         for (MutantStack<int>::reverse_iterator it = mstack.rbegin();
              it != mstack.rend(); ++it)
             std::cout << *it << std::endl;
+    }
+    printColor("Different Containers", BLUE);
+    {
+        
+        MutantStack<int, std::vector<int> > ms_vec;
+        ms_vec.push(10); 
+        ms_vec.push(20); 
+        ms_vec.push(30);
+        std::cout << "vector begin..end\n";
+        for (MutantStack<int, std::vector<int> >::iterator it = ms_vec.begin();
+             it != ms_vec.end(); ++it)
+            std::cout << *it << std::endl;
+        std::cout << std::endl;
+
+        MutantStack<int, std::list<int> > ms_list;
+        ms_list.push(10); 
+        ms_list.push(30); 
+        ms_list.push(20);
+        std::cout << "list rbegin..rend\n";
+        for (MutantStack<int, std::list<int> >::reverse_iterator rit = ms_list.rbegin();
+             rit != ms_list.rend(); ++rit)
+            std::cout << *rit << std::endl;
+        std::cout << std::endl;
+    }
     return 0;
 }
