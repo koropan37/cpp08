@@ -43,7 +43,7 @@ unsigned int Span::longestSpan() const {
     if (numbers_.size() <= 1)
         throw std::logic_error("longestSpan: not enough elements");
 
-        int min = *numbers_.begin();         
-        int max = *numbers_.rbegin();        
-        return static_cast<unsigned int>(max - min);
+    int min = *numbers_.begin();         
+    int max = *numbers_.rbegin();        
+    return static_cast<unsigned int>(max - min);
 }
